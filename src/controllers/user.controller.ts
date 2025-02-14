@@ -42,3 +42,17 @@ export const Login: RequestHandler = (req, res) => {
 
   res.json(user);
 };
+
+export const getProfile: RequestHandler = (req, res) => {
+  const { _id } = req.body;
+
+  const profile = users.find((user) => user._id == _id);
+
+  if (!profile) {
+    res.send("This profile doesnt exist");
+    return;
+  }
+
+  console.log(profile);
+  res.json(profile);
+};
